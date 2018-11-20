@@ -31,12 +31,9 @@ def valualisation():
     a_K = 0 #балл за автора К
     a_N = 0 #балл за автора N
 
-    txtN = open("file1.txt").read()
-    txtN = txtN.decode('utf8')
-    txtK = open("file2.txt").read()
-    txtK = txtK.decode('utf8')
-    txtS = open("file3.txt").read()
-    txtS = txtS.decode('utf8')
+    txtN = open("Conan_Doyle_Sher", encoding='utf-8').read()
+    txtK = open("London_Eden", encoding='utf-8').read()
+    txtS = open("Conan_Doyle_Lost", encoding='utf-8').read()
 
     n_a_dict = reader(txtN)
     k_a_dict = reader(txtK)
@@ -65,8 +62,11 @@ def valualisation():
         elif math.fabs(y-x) < math.fabs(z-x):
             a_N += 1
 
-    np = a_N/len(t_dict)
-    kp = a_K/len(t_dict)
-    return "Probability for Author N =" + np+";\nProbability for Author K =" +kp
+    np = math.ceil(a_N/len(t_dict)*100)
+    kp = math.ceil(a_K/len(t_dict)*100)
 
-valualisation()
+    res_line = ("Probability for Author N = "+ str(np)+ "%; \nProbability for Author K = "+ str(kp)+ "%.")
+    return res_line
+
+
+print(valualisation())
